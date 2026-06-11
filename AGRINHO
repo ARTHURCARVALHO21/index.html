@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AGRO NEXUS 2050 | O Futuro Brota da Terra</title>
+<title>AGRO VISION 2050 | O Futuro Nasce no Campo</title>
 
 <style>
 :root{
-    --lime:#BFFF00;
-    --green:#32CD32;
+    --lime:#C6FF00;
+    --green:#39FF14;
     --black:#050505;
     --white:#ffffff;
+    --dark:#0d0d0d;
 }
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+    font-family: "Segoe UI", sans-serif;
     scroll-behavior:smooth;
 }
 
@@ -27,32 +28,75 @@ body{
     overflow-x:hidden;
 }
 
-/* Fundo animado */
-body::before{
-    content:"";
+/* Fundo futurista */
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(198,255,0,.15), transparent 20%),
+        radial-gradient(circle at 80% 30%, rgba(57,255,20,.1), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(198,255,0,.12), transparent 25%),
+        #050505;
+    animation: moveBg 12s infinite alternate;
+}
+
+@keyframes moveBg{
+    from{transform:scale(1);}
+    to{transform:scale(1.15);}
+}
+
+/* Linhas futuristas */
+.grid{
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at 20% 20%, rgba(191,255,0,.15), transparent 25%),
-    radial-gradient(circle at 80% 30%, rgba(50,205,50,.15), transparent 25%),
-    radial-gradient(circle at 50% 80%, rgba(191,255,0,.08), transparent 30%);
-    animation:bgMove 10s infinite alternate;
+    linear-gradient(rgba(198,255,0,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198,255,0,.05) 1px, transparent 1px);
+    background-size:50px 50px;
     z-index:-1;
 }
 
-@keyframes bgMove{
-    from{transform:scale(1);}
-    to{transform:scale(1.2);}
+/* Menu */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,.4);
+    border-bottom:1px solid rgba(198,255,0,.2);
+    z-index:1000;
 }
 
-/* Header */
+nav ul{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--lime);
+    text-shadow:0 0 10px var(--lime);
+}
+
+/* Hero */
 .hero{
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
-    text-align:center;
+    align-items:center;
     flex-direction:column;
+    text-align:center;
     padding:20px;
 }
 
@@ -61,10 +105,10 @@ body::before{
     font-weight:900;
     color:var(--lime);
     text-shadow:
-    0 0 10px var(--lime),
-    0 0 30px var(--lime),
-    0 0 60px var(--green);
-    animation:pulse 2s infinite;
+        0 0 10px var(--lime),
+        0 0 30px var(--lime),
+        0 0 60px var(--green);
+    animation:pulse 3s infinite;
 }
 
 @keyframes pulse{
@@ -73,86 +117,57 @@ body::before{
     }
 }
 
-.slogan{
-    font-size:1.5rem;
-    max-width:800px;
-    margin:25px auto;
-    color:white;
+.tag{
+    margin-top:20px;
+    color:var(--white);
+    font-size:1.4rem;
+    max-width:900px;
 }
 
 .highlight{
     color:var(--lime);
 }
 
-.btn{
-    padding:15px 35px;
+.cta{
+    margin-top:35px;
+    padding:16px 40px;
     border:none;
+    border-radius:50px;
     background:var(--lime);
     color:black;
-    font-size:1rem;
     font-weight:bold;
-    border-radius:50px;
     cursor:pointer;
     transition:.4s;
-    box-shadow:0 0 20px var(--lime);
+    box-shadow:0 0 25px var(--lime);
 }
 
-.btn:hover{
+.cta:hover{
     transform:translateY(-5px) scale(1.05);
-    box-shadow:0 0 40px var(--lime);
+    box-shadow:0 0 50px var(--lime);
 }
 
-/* Menu */
-nav{
-    position:fixed;
-    width:100%;
-    top:0;
-    backdrop-filter:blur(10px);
-    background:rgba(0,0,0,.6);
-    z-index:1000;
-}
-
-nav ul{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    list-style:none;
-    padding:20px;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
-}
-
-nav a:hover{
-    color:var(--lime);
-}
-
-/* Seções */
+/* Sections */
 section{
     padding:100px 10%;
 }
 
-.section-title{
+.title{
     text-align:center;
     font-size:3rem;
-    margin-bottom:50px;
     color:var(--lime);
+    margin-bottom:50px;
     text-shadow:0 0 15px var(--lime);
 }
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:30px;
 }
 
 .card{
-    background:#111;
-    border:1px solid rgba(191,255,0,.2);
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(198,255,0,.2);
     border-radius:20px;
     padding:30px;
     transition:.4s;
@@ -160,7 +175,7 @@ section{
 
 .card:hover{
     transform:translateY(-10px);
-    box-shadow:0 0 25px rgba(191,255,0,.5);
+    box-shadow:0 0 25px rgba(198,255,0,.4);
 }
 
 .card h3{
@@ -168,62 +183,71 @@ section{
     margin-bottom:15px;
 }
 
-/* Estatísticas */
+/* Impacto */
 .stats{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:40px;
-    margin-top:50px;
+    text-align:center;
 }
 
 .stat{
-    text-align:center;
+    padding:30px;
 }
 
 .number{
     font-size:4rem;
     font-weight:900;
     color:var(--lime);
+    text-shadow:0 0 20px var(--lime);
 }
 
-.label{
-    color:white;
-}
-
-/* CTA */
-.cta{
+/* CTA final */
+.future{
     text-align:center;
-    background:linear-gradient(135deg,#0d0d0d,#1a1a1a);
-    border-top:1px solid rgba(191,255,0,.2);
+    background:linear-gradient(135deg,#0d0d0d,#111);
+    border-top:1px solid rgba(198,255,0,.2);
 }
 
-.cta p{
-    max-width:800px;
-    margin:20px auto;
+.future p{
+    max-width:900px;
+    margin:auto;
     font-size:1.2rem;
+    line-height:1.8;
 }
 
 /* Footer */
 footer{
-    text-align:center;
     padding:30px;
-    background:#000;
-    border-top:1px solid rgba(191,255,0,.2);
+    text-align:center;
+    border-top:1px solid rgba(198,255,0,.2);
+    background:black;
 }
 
 footer span{
     color:var(--lime);
 }
 
+#message{
+    margin-top:25px;
+    color:var(--lime);
+    font-weight:bold;
+    font-size:1.1rem;
+}
+
 /* Responsivo */
 @media(max-width:768px){
+
     .logo{
         font-size:3rem;
     }
 
-    .slogan{
-        font-size:1.1rem;
+    .tag{
+        font-size:1rem;
+    }
+
+    .title{
+        font-size:2rem;
     }
 
     nav ul{
@@ -233,7 +257,11 @@ footer span{
 }
 </style>
 </head>
+
 <body>
+
+<div class="background"></div>
+<div class="grid"></div>
 
 <nav>
     <ul>
@@ -245,143 +273,173 @@ footer span{
 </nav>
 
 <header class="hero">
-    <h1 class="logo">AGRO NEXUS 2050</h1>
 
-    <p class="slogan">
-        <span class="highlight">Produzir mais.</span>
-        Preservar melhor.
-        Conectar tecnologia, sustentabilidade e inovação para alimentar o futuro do planeta.
+    <h1 class="logo">AGRO VISION 2050</h1>
+
+    <p class="tag">
+        <span class="highlight">O FUTURO NASCE NO CAMPO.</span><br>
+        Tecnologia, sustentabilidade e inovação conectando pessoas,
+        natureza e produtividade para alimentar o mundo de forma inteligente.
     </p>
 
-    <button class="btn" onclick="mostrarMensagem()">
-        Descubra o Futuro
+    <button class="cta" onclick="mostrarMensagem()">
+        Descobrir o Futuro
     </button>
 
-    <p id="mensagem" style="margin-top:25px;color:#BFFF00;font-weight:bold;"></p>
+    <div id="message"></div>
+
 </header>
 
 <section id="sobre">
-    <h2 class="section-title">Agro Forte e Sustentável</h2>
+
+    <h2 class="title">🌱 Agro Forte e Sustentável</h2>
 
     <div class="cards">
+
         <div class="card">
-            <h3>🌱 Produção Inteligente</h3>
+            <h3>Produção Inteligente</h3>
             <p>
-                Agricultura moderna baseada em dados, eficiência e redução de desperdícios.
+                Utilizamos dados, inovação e eficiência para produzir mais
+                utilizando menos recursos naturais.
             </p>
         </div>
 
         <div class="card">
-            <h3>🚜 Tecnologia Avançada</h3>
+            <h3>Sustentabilidade Real</h3>
             <p>
-                Máquinas conectadas, sensores, drones e automação impulsionando resultados.
+                Preservação ambiental e crescimento econômico trabalhando juntos
+                para garantir o futuro das próximas gerações.
             </p>
         </div>
 
         <div class="card">
-            <h3>🌎 Sustentabilidade Real</h3>
+            <h3>Alto Desempenho</h3>
             <p>
-                Crescimento econômico aliado à preservação dos recursos naturais.
+                Soluções modernas aumentam a produtividade sem comprometer a saúde
+                do solo, da água e dos ecossistemas.
             </p>
         </div>
+
     </div>
+
 </section>
 
 <section id="tecnologia">
-    <h2 class="section-title">O Campo Conectado</h2>
+
+    <h2 class="title">🚀 Campo Digital</h2>
 
     <div class="cards">
+
         <div class="card">
             <h3>🤖 Inteligência Artificial</h3>
             <p>
-                Previsão climática, monitoramento de safras e decisões estratégicas em tempo real.
+                Monitoramento de safras, previsões climáticas e análises
+                inteligentes em tempo real.
             </p>
         </div>
 
         <div class="card">
-            <h3>📡 Agricultura Digital</h3>
+            <h3>📡 Sensores e Drones</h3>
             <p>
-                Sensores inteligentes aumentam produtividade e reduzem impactos ambientais.
+                Precisão máxima para otimizar recursos e reduzir desperdícios.
             </p>
         </div>
 
         <div class="card">
-            <h3>🔋 Energia Limpa</h3>
+            <h3>⚡ Energia Renovável</h3>
             <p>
-                Soluções renováveis para tornar o agro ainda mais eficiente e sustentável.
+                Fontes limpas impulsionando um agro mais eficiente e sustentável.
             </p>
         </div>
+
     </div>
+
 </section>
 
 <section id="impacto">
-    <h2 class="section-title">Impacto Positivo</h2>
+
+    <h2 class="title">📊 Impacto Positivo</h2>
 
     <div class="stats">
+
         <div class="stat">
             <div class="number" id="n1">0</div>
-            <div class="label">Eficiência</div>
+            <h3>Eficiência</h3>
         </div>
 
         <div class="stat">
             <div class="number" id="n2">0</div>
-            <div class="label">Inovação</div>
+            <h3>Inovação</h3>
         </div>
 
         <div class="stat">
             <div class="number" id="n3">0</div>
-            <div class="label">Sustentabilidade</div>
+            <h3>Sustentabilidade</h3>
         </div>
+
+        <div class="stat">
+            <div class="number" id="n4">0</div>
+            <h3>Tecnologia</h3>
+        </div>
+
     </div>
+
 </section>
 
-<section id="futuro" class="cta">
-    <h2 class="section-title">O Futuro Está Plantado Hoje</h2>
+<section id="futuro" class="future">
+
+    <h2 class="title">🌎 O Amanhã Está Sendo Cultivado Hoje</h2>
 
     <p>
-        O agronegócio do futuro não é apenas produtivo. É inteligente,
-        conectado, sustentável e preparado para alimentar uma população global
-        crescente sem comprometer o planeta.
+        O agronegócio do futuro será conectado, inteligente e sustentável.
+        Cada hectare cultivado com responsabilidade representa mais alimento,
+        mais inovação e mais oportunidades para o planeta.
+        A tecnologia transforma o campo em uma potência capaz de alimentar o mundo
+        preservando os recursos naturais.
     </p>
 
-    <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <br><br>
+
+    <button class="cta" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         Voltar ao Topo
     </button>
+
 </section>
 
 <footer>
-    © 2026 <span>AGRO NEXUS 2050</span> — Cultivando a próxima geração do planeta.
+    © 2026 <span>AGRO VISION 2050</span> • Cultivando o futuro com tecnologia e sustentabilidade.
 </footer>
 
 <script>
 function mostrarMensagem(){
-    document.getElementById("mensagem").innerHTML =
-    "🚀 O futuro do agro já começou: mais tecnologia, mais produtividade e mais sustentabilidade.";
+    document.getElementById("message").innerHTML =
+    "🚜 O agro do futuro já começou: mais tecnologia, mais produtividade e mais sustentabilidade.";
 }
 
-function animarNumero(id, alvo){
-    let atual = 0;
-    const elemento = document.getElementById(id);
+function animate(id,target){
+    let n=0;
+    const el=document.getElementById(id);
 
-    const intervalo = setInterval(()=>{
-        atual++;
-        elemento.textContent = atual + "%";
+    const timer=setInterval(()=>{
+        n++;
+        el.innerHTML=n+"%";
 
-        if(atual >= alvo){
-            clearInterval(intervalo);
+        if(n>=target){
+            clearInterval(timer);
         }
     },20);
 }
 
-const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            animarNumero("n1",95);
-            animarNumero("n2",98);
-            animarNumero("n3",100);
-            observer.disconnect();
-        }
-    });
+const observer=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+
+        animate("n1",95);
+        animate("n2",98);
+        animate("n3",100);
+        animate("n4",97);
+
+        observer.disconnect();
+    }
 });
 
 observer.observe(document.querySelector("#impacto"));
